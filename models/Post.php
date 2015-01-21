@@ -6,7 +6,7 @@ class Post extends Eloquent {
         return $this->belongsTo('User');
     }
     
-    public function comment() {
+    public function comments() {
         return $this->hasMany('comment');
     }
 
@@ -16,6 +16,16 @@ class Post extends Eloquent {
 
     public function scopePublish($query) {
         return $query->where('status', '=', 'publish')
+                        ->orderBy('updated_at', 'desc');
+    }
+    
+    public function scopeNoTrash($query) {
+        return $query->where('status', '!=', 'trash')
+                        ->orderBy('updated_at', 'desc');
+    }
+    
+    public function scopeTrash($query) {
+        return $query->where('status', '=', 'trash')
                         ->orderBy('updated_at', 'desc');
     }
 

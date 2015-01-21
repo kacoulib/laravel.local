@@ -15,7 +15,7 @@
 // routes/blog.php
 //route::post('comment','BlogController@create');
 
-// mettre en place la vue single.blade.php
+// mettre en place la vue show.blade.php
 // regarder sur le site laravel.com heper form
  
 //{{Form::open(['url'=>'comment'])}}
@@ -31,6 +31,18 @@
 //         dd(input:all);
 //     }
 // }
+
+/**
+ * creer un template login.blade
+ *      username + password
+ * créez la route qui affiche ce formulaire
+ * on va également créer un controller spécifique pour bérifier le couple username + password => AuthController avec deix methodes:
+ *      index + logout
+ *      Auth::atempt($userdata, $remember); //$remember paramettre facultatif  
+ *      Auth::logout(); //pour se deloguer 
+ *      Auth::guest();
+ */
+
 
 
                         $table->increments('id');

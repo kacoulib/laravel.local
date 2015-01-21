@@ -30,6 +30,19 @@ class PostTableSeeder extends Seeder {
                     'excerpt' => 'o jsj sjoksdl',
                     'content' => 'ignissim sit amet, adipiscing nec, ultricies sed, dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non 
             risus. Suspendisse lectus tortor.',
+                    'status' => 'unpublish',
+                    'link_thumbnail' => 'laravel_sjhksd.jpg',
+                    'created_at' => $dateTime,
+                    'updated_at' => $dateTime
+                ],
+                [
+                    'title' => 'PSR-3 Autoload',
+                    'slug' => Str::slug('PSR-1 Autoload'),
+                    'user_id' => 2,
+                    'category_id' => 1,
+                    'excerpt' => 'o jsj sjoksdl',
+                    'content' => 'ignissim sit amet, adipiscing nec, ultricies sed, dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non 
+            risus. Suspendisse lectus tortor.',
                     'status' => 'publish',
                     'link_thumbnail' => 'laravel_sjhksd.jpg',
                     'created_at' => $dateTime,

@@ -14,8 +14,12 @@ class CreateCommentsTable extends Migration {
         Schema::create('comments', function(Blueprint $table) {
             $table->increments('id');
             $table->string('username', 50);
+            $table->string('email', 120);
             $table->integer('post_id')->unsigned();
             $table->text('content');
+            $table->text('number');
+            $table->text('pays');
+            $table->enum('status', array('publish', 'unpublish', 'dash'))->default('unpublish');
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('CASCADE');
             $table->timestamps();
         });

@@ -22,7 +22,7 @@ class CreatePostsTable extends Migration {
 			$table->text('content');
 			$table->string('link_thumbnail', 200);
 			$table->integer('comments_count')->default(0);
-			$table->enum('status', array('publish', 'unpublish', 'dash'))->default('unpublish');
+			$table->enum('status', array('publish', 'unpublish', 'trash'))->default('unpublish');
                         $table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL');
 			$table->timestamps();
 		});

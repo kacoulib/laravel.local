@@ -10,17 +10,18 @@
   | and give it the Closure to execute when that URI is requested.
   |
  */
+route::pattern('id','[1-9][0-9]*');
 
 Route::when('*','csrf',['post']);
 
-route::pattern('id','[1-9][0-9]*');
+Route::filter('old', function()
+{
+    if (Input::get('age') < 200)
+    {
+        return Redirect::to('/');
+    }
+});
 foreach (File::allFiles(__DIR__.'/routes')as $partials){
     require_once $partials->getPathname();
 }
-// exemple controller/action
-
-app::missing(function($exception){
-   return Response::view('error', [],404);
- 
-});
 

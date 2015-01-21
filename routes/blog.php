@@ -8,8 +8,9 @@ Route::get('blog/','BlogController@showBlogPost');
 Route::get('comments/{slug}/{id}','BlogController@showCommentPost');
 Route::get('contact','BlogController@contact');
 
+Route::get('user/{age}', ['before' => 'old', 'BlogController@user']);
 
-Route::post('comments/{slug}/{id}','BlogController@Create');
+Route::post('comment','BlogController@Create');
 Route::post('contact',function(){
         return'oui';});
 // pour filtre les post et get

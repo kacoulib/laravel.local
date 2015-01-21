@@ -12,6 +12,7 @@ class CommentTableSeeder extends Seeder {
                 [
                     'username' => 'Karim',
                     'content' => 'tus tortor, dignissim sit amet, adipiscing nec. ',
+                    'email' => 'coulibaly91karim@gmail.com',
                     'post_id' => 1,
                     'created_at' => $dateTime,
                     'updated_at' => $dateTime
@@ -19,6 +20,7 @@ class CommentTableSeeder extends Seeder {
                 [
                     'username' => 'antoine',
                     'content' => ' adipiscing nec.tus tortor, dignissim sit amet. ',
+                    'email' => 'antoine.luscko@wanadoo.fr',
                     'post_id' => 2,
                     'created_at' => $dateTime,
                     'updated_at' => $dateTime

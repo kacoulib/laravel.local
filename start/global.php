@@ -46,9 +46,15 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 |
 */
 
-App::error(function(Exception $exception, $code)
+App::error(function($exception)
 {
-	Log::error($exception);
+	//Log::error($exception);
+    if($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException){
+        return Response::view('error', ['message'=>'Model ici'],404);
+    }
+    if($exception instanceof \RuntimeException){
+        return Redirect::to('admin/dashboard');
+    }
 });
 
 /*

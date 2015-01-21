@@ -6,31 +6,48 @@
         <img src="img/map.png" class="img-responsive" />
     </div>
     <div class="col-xs-8">
-        {{Form::open(['url'=>''])}}
+        {{Form::open(['url'=>'admin/post/'.$post->id , 'method'=>'PUT' ])}}
         <div class="col-xs-6">
-            {{Form::text('nom', Input::old('nom'), array('class' => 'form-control','placeholder'=>'Nom et Prenom'))}}
-            <br />
-        </div>
-
-        <div class="col-xs-6">
-            {{Form::text('email', Input::old('email'), array('class' => 'form-control','placeholder'=>'Email (*)','required'=>'required'))}}
-            <br />
-        </div>
-
-        <div class="col-xs-6">
-            {{Form::number('number', Input::old('number'), array('class' => 'form-control','placeholder'=>'Number'))}}
-            <br />
-        </div>
-
-        <div class="col-xs-6">
-            {{Form::select('Pays', array('disabled'=>'Disabled', 'France' => 'France','Pays-bas'=>'Pays-bas','autre'=>'...'), null, array('class' => 'form-control','placeholder'=>'Number'))}}
+            {{Form::text('title', $post->title, array('class' => 'form-control','placeholder'=>'titre'))}}
             <br />
         </div>
 
         <div class="col-xs-12 text-right">
-            {{Form::textarea('message', null, array('class' => 'form-control'))}}
+            {{Form::textarea('content', $post->content, array('class' => 'form-control','placeholder'=>'contenu', 'value'=> $post->contenu))}}
             <br />
-            {{Form::submit('Envoyer', array('class' => 'btn btn-success'))}}
+
+        </div>
+
+        <div class="col-xs-12">
+            <strong>blog_category :</strong>
+            @foreach($categories as $cat)
+            {{Form::label($cat->title, $cat->title)}}
+            {{ ($cat->title == $post->category->title)? Form::radio('category_id', $cat->id,true,['id'=>$cat->title]) : Form::radio('category_id', $cat->id, null, ['id'=>$cat->title])}}
+
+            @endforeach
+
+        </div>
+
+        <div class="col-xs-12">
+            <strong>blog_status :</strong>
+            @foreach($posts as $p)
+            @if($p->status == 'publish')
+                <span class='btn btn-success'>
+             @elseif($p->status == 'unpublish')
+                <span class='btn btn-warning'>
+
+             @else
+                <span class='btn btn-danger'>
+             @endif
+                {{Form::label($p->status, $p->status)}}
+                {{ ($p->status == $post->status)? Form::radio('status', $post->status,true,['id'=>$p->status]) : Form::radio('status', $p->status, null, ['id'=>$p->status])}}
+            </span>
+            @endforeach
+        </div>
+
+        <div class="col-xs-12">
+
+            {{Form::submit('Update', array('class' => 'btn btn-success'))}}
 
         </div>
 

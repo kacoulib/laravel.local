@@ -2,14 +2,18 @@
 
 <div class="container header">
     <div class="row header">
+          @if(Session::has('message'))
+                    <div class="alert alert-info">{{Session::get('message')}}</div>
+                @endif
         @section('header')
         <div class="col-lg-4">
             <img src="{{asset('img/logo.png')}}" class="img-responsive" />
         </div>
         <div class="col-xs-4 col-lg-offset-4">
             <blockquote>
-                <p>Keep calm and love DooDoux</p>
-                <small>GroPanda</small>
+                @if(Session::has('message'))
+                    <div class="alert alert-info">{{Session::get('message')}}</div>
+                @endif
             </blockquote>
         </div>
         @show
@@ -21,7 +25,7 @@
         @yield('content')
         @section('sidevbar')
         <div class="sidebar col-lg-4">
-            sidebar
+            
         </div>
 
         @show
